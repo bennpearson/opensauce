@@ -1,7 +1,6 @@
 var win = Titanium.UI.currentWindow;
 
 var data = [
-{ title: 'Select Course' },
 { title: 'Settings' },
 { title: 'Help' }
 ];
