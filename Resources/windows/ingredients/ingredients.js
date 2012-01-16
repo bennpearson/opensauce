@@ -5,8 +5,7 @@ win.barColor = '#000';
 win.titleImage = '../../images/text_ingredients.png';
 win.barImage = '../../images/text_headbg.png';
    
-    // create Window 2
-var win1 = Titanium.UI.currentWindow;
+
 
 var headerView = Ti.UI.createView({
     top: 0,
@@ -59,6 +58,7 @@ for (var i = CustomData.length - 1; i >= 0; i--){
     
     var row = Titanium.UI.createTableViewRow({
         selectedBackgroundColor: '#000',
+        borderColor:'#000',
         top:0,
         width:380,
         height:150
@@ -84,11 +84,11 @@ for (var i = CustomData.length - 1; i >= 0; i--){
 		if (e.rowData.urlink)
 		{
 			Titanium.API.info("You clicked the button");
-			var win1 = Titanium.UI.createWindow({
+			var win = Titanium.UI.createWindow({
 				url:e.rowData.urlink,
 				title:'Cod and Potato',
 			});
-			Titanium.UI.currentTab.open(win1,{animated:true});
+			Titanium.UI.currentTab.open(win,{animated:true});
 		}
 	});
 	//endEvent      
@@ -99,4 +99,4 @@ headerView.add(label);
 headerView.add(label2);
 headerView.add(label3);
 headerView.add(label4);
-win1.add(TheTable);
+win.add(TheTable);

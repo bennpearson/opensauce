@@ -1,88 +1,69 @@
-//
-// SETUP WINDOW STYLES
-//
-Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
-var win = Ti.UI.currentWindow;
-
-var cover = Titanium.UI.createView({
-	backgroundImage:'../images/scrollable_view/bg.png',
-	zIndex:5
-});
-win.add(cover);
-win.addEventListener('open',function(E){
-cover.animate({opacity:0,duration:2000});
-});
+var win = Titanium.UI.currentWindow;
+win.backgroundImage = '../../images/chalkboard.png';
+win.backgroundColor = '#000';
+win.barColor = '#000';
+win.titleImage = '../../images/header_foodgen.png';
+win.barImage = '../../images/header_foodgen.png';
 
 
-var t = Ti.UI.create2DMatrix().scale(0.75);
-var view1 = Ti.UI.createView({
-	width:150,
-	height:150,
-	top:0,
-	//borderWidth: 5,
-	//borderColor:'#000',
-	backgroundImage:'../../images/0.png',
+var plus =  Titanium.UI.createImageView({
+    image: '../../images/plus.png',
+    width: 29,
+    height: 31,
+    top:130,
+    zIndex:2,
 });
 
-
-var t2 = Ti.UI.create2DMatrix().scale(0.75);
-var view2 = Ti.UI.createView({
-	width:150,
-	height:150,
-	top:0,
-	backgroundImage:'../../images/0.png',
-	zIndex:1
-});
-
-var t3 = Ti.UI.create2DMatrix().scale(0.75);
-var view3 = Ti.UI.createView({
-	width:150,
-	height:150,
-	top:0,
-	//borderWidth: 5,
-	//borderColor:'#000',
-	backgroundImage:'../../images/1.png',
-});
-
-
-var t4 = Ti.UI.create2DMatrix().scale(0.75);
-var view4 = Ti.UI.createView({
-	width:150,
-	height:150,
-	top:0,
-	backgroundImage:'../../images/1.png',
-	zIndex:1
-});
-
-var image1 = view1.toImage();
-var image2 = view2.toImage();
-var image3 = view3.toImage();
-var image4 = view4.toImage();
-
-var iv1 = Ti.UI.createImageView({image:image1,height:220, width:220});
-var iv2 = Ti.UI.createImageView({image:image2,height:220, width:220});
-var iv3 = Ti.UI.createImageView({image:image3,height:220, width:220});
-var iv4 = Ti.UI.createImageView({image:image4,height:220, width:220});
+var iv1 = Ti.UI.createImageView({image:'../../images/0.png',height:100, width:222});
+var iv2 = Ti.UI.createImageView({image:'../../images/1.png',height:100, width:49});
+var iv3 = Ti.UI.createImageView({image:'../../images/2.png',height:100, width:51});
+var iv4 = Ti.UI.createImageView({image:'../../images/3.png',height:100, width:46});
+var iv5 = Ti.UI.createImageView({image:'../../images/4.png',height:100, width:59});
+var iv6 = Ti.UI.createImageView({image:'../../images/5.png',height:100, width:47});
+var iv7 = Ti.UI.createImageView({image:'../../images/6.png',height:100, width:90});
+var iv8 = Ti.UI.createImageView({image:'../../images/7.png',height:100, width:60});
+var iv9 = Ti.UI.createImageView({image:'../../images/8.png',height:100, width:107});
 
 
 var scrollView = Titanium.UI.createScrollableView({
-	views:[iv1,iv2],
-	showPagingControl:true,
+	views:[iv7,iv1,iv9],
+	showPagingControl:false,
 	clipViews:false,
-	top:0,
-	left:50,
-	right:50,
-	height:200
+	top:30,
+	height:100,
+	width:222,
+	currentPage:1
 });
 var scrollView2 = Titanium.UI.createScrollableView({
-	views:[iv3,iv4],
-	showPagingControl:true,
+	views:[iv3,iv2,iv4,iv5,iv6,iv8],
+	showPagingControl:false,
 	clipViews:false,
-	bottom:0,
-	left:50,
-	right:50,
-	height:200
+	top:170,
+	height:100,
+	width:170,
+	currentPage:1
 });
+
+var button =  Titanium.UI.createImageView({
+    image: '../../images/feedme.png',
+    width: 160,
+    height: 42,
+    left: 80,
+    top: 300,
+    zIndex:1,
+});
+// create table view event listener
+button.addEventListener('click', function(e)
+{
+    var win = Titanium.UI.createWindow({
+        url:'../ingredients/cod_and_potato.js',
+    });
+    Titanium.UI.currentTab.open(win,{animated:true});
+
+});
+
+win.add(button);
+win.add(plus);
 win.add(scrollView);
 win.add(scrollView2);
 
